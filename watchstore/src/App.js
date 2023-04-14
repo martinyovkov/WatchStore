@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element = {<HomePage/>} />
           <Route path='/catalog' element = {<Catalog/>} />
-          <Route path='/watches/:watchId' element = {<WatchDetails/>} />
+          <Route path='/watches' element = {<WatchDetails/>} />
         </Routes>
 
         <Footer></Footer>

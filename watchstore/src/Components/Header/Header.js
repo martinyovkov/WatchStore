@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import {useState} from 'react';
 
@@ -7,6 +8,7 @@ export function Header() {
     const OnClickHandler = () =>{
         SetSearchOpened(!searchOpened);
     }
+
     return(
             <> 
                 <div className="container">
@@ -14,60 +16,40 @@ export function Header() {
                     <div className="row">
                     <div className="col-lg-3 col-md-3">
                         <div className="header__logo">
-                        <a href="./index.html">
+                        <Link to="/">
                             <img src="img/logo.png" alt="" />
-                        </a>
+                        </Link>
                         </div>
                     </div>
                     <div className="col-lg-6 col-md-6">
                         <nav className="header__menu mobile-menu">
-                        <ul>
-                            <li className="active">
-                            <a href="./index.html">Home</a>
-                            </li>
-                            <li>
-                            <a href="./shop.html">Shop</a>
-                            </li>
-                            <li>
-                            <a href="#">Pages</a>
-                            <ul className="dropdown">
+                            <ul>
                                 <li>
-                                <a href="./about.html">About Us</a>
+                                    <NavLink to="/"> Home</NavLink>
                                 </li>
                                 <li>
-                                <a href="./shop-details.html">Shop Details</a>
+                                    <NavLink to="/catalog">Catalog</NavLink>
                                 </li>
                                 <li>
-                                <a href="./shopping-cart.html">Shopping Cart</a>
+                                    <NavLink to="/about">About</NavLink>
                                 </li>
                                 <li>
-                                <a href="./checkout.html">Check Out</a>
-                                </li>
-                                <li>
-                                <a href="./blog-details.html">Blog Details</a>
+                                    <NavLink to="#">Profile</NavLink>
                                 </li>
                             </ul>
-                            </li>
-                            <li>
-                            <a href="./blog.html">Blog</a>
-                            </li>
-                            <li>
-                            <a href="./contact.html">Contacts</a>
-                            </li>
-                        </ul>
                         </nav>
                     </div>
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
-                        <a href="#" className="search-switch" >
+                        <Link to="#" className="search-switch" >
                             <img src="img/icon/search.png" onClick={OnClickHandler} alt="" />
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link to="/user">
                             <img src="img/icon/heart.png" alt="" />
-                        </a>
-                        <a href="#">
+                        </Link>
+                        <Link to="/cart">
                             <img src="img/icon/cart.png" alt="" /> <span>0</span>
-                        </a>
+                        </Link>
                         <div className="price">$0.00</div>
                         </div>
                     </div>

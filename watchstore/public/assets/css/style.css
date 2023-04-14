@@ -423,7 +423,7 @@ ol {
 	position: relative;
 }
 
-.header__menu ul li.active a:after {
+.header__menu ul li a.nav-link.active {
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
