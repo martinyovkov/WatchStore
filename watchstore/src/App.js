@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element = {<HomePage/>} />
           <Route path='/catalog' element = {<Catalog/>} />
           <Route path='/watches/create' element = {<CreateWatch/>} />
-          <Route path='/watches' element = {<CreateWatch/>} />
+          <Route path='/watches/:watchId' element = {<WatchDetails/>} />
           <Route path='/register' element = {<Register/>} />
           <Route path='/login' element = {<Login/>} />
         </Routes>

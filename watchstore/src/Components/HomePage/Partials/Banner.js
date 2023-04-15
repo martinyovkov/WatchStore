@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export function Banner() {
   return(
@@ -11,7 +12,7 @@ export function Banner() {
                 </div>
                 <div className="banner__item__text">
                     <h2>Clothing Collections 2030</h2>
-                    <a href="#">Shop now</a>
+                    <Link to="/catalog">Shop now</Link>
                 </div>
                 </div>
             </div>
@@ -22,7 +23,7 @@ export function Banner() {
                 </div>
                 <div className="banner__item__text">
                     <h2>Accessories</h2>
-                    <a href="#">Shop now</a>
+                    <Link to="/catalog">Shop now</Link>
                 </div>
                 </div>
             </div>
@@ -33,7 +34,7 @@ export function Banner() {
                 </div>
                 <div className="banner__item__text">
                     <h2>Shoes Spring 2030</h2>
-                    <a href="#">Shop now</a>
+                    <Link to="/catalog">Shop now</Link>
                 </div>
                 </div>
             </div>
