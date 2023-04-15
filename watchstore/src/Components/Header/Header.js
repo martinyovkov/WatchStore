@@ -17,7 +17,7 @@ export function Header() {
                     <div className="col-lg-3 col-md-3">
                         <div className="header__logo">
                         <Link to="/">
-                            <img src="img/logo.png" alt="" />
+                            <img src="/img/logo.png" alt="" />
                         </Link>
                         </div>
                     </div>
@@ -42,13 +42,13 @@ export function Header() {
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
                         <Link to="#" className="search-switch" >
-                            <img src="img/icon/search.png" onClick={OnClickHandler} alt="" />
+                            <img src="/img/icon/search.png" onClick={OnClickHandler} alt="" />
                         </Link>
                         <Link to="/user">
-                            <img src="img/icon/heart.png" alt="" />
+                            <img src="/img/icon/heart.png" alt="" />
                         </Link>
                         <Link to="/cart">
-                            <img src="img/icon/cart.png" alt="" /> <span>0</span>
+                            <img src="/img/icon/cart.png" alt="" /> <span>0</span>
                         </Link>
                         <div className="price">$0.00</div>
                         </div>
