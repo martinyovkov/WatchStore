@@ -8,6 +8,7 @@ import { WatchDetails } from './Components/Product/Details/WatchDetails';
 import { Register } from './Components/Authentication/Register';
 import { Login } from './Components/Authentication/Login';
 import { CreateWatch } from './Components/Product/Create/CreateWatch';
+import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           <Route path='/watches/:watchId' element = {<WatchDetails/>} />
           <Route path='/register' element = {<Register/>} />
           <Route path='/login' element = {<Login/>} />
+          <Route path='/user/shoppingcart' element = {<ShoppingCart/>} />
+
         </Routes>
 
         <Footer></Footer>

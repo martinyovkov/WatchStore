@@ -17,7 +17,7 @@ export function Header() {
                     <div className="col-lg-3 col-md-3">
                         <div className="header__logo">
                         <Link to="/">
-                            <img src="/img/logo.png" alt="" />
+                            <img src="/img/logo6.png" alt="" />
                         </Link>
                         </div>
                     </div>
@@ -36,6 +36,9 @@ export function Header() {
                                 <li>
                                     <NavLink to="#">Profile</NavLink>
                                 </li>
+                                <li>
+                                    <NavLink to="/watches/create">Sell Watch</NavLink>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -47,7 +50,7 @@ export function Header() {
                         <Link to="/user">
                             <img src="/img/icon/heart.png" alt="" />
                         </Link>
-                        <Link to="/cart">
+                        <Link to="/user/shoppingcart">
                             <img src="/img/icon/cart.png" alt="" /> <span>0</span>
                         </Link>
                         <div className="price">$0.00</div>

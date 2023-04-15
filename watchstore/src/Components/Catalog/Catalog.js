@@ -3,7 +3,7 @@ import { Poster } from "../Product/Poster/WatchPoster";
 
 export function Catalog(){
 
-    const bestSellers = [Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster]
+    const bestSellers = [Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster];
     return(
         <>
             <Heading></Heading>
@@ -131,54 +131,11 @@ export function Catalog(){
                                         </div>
                                         </div>
                                     </div>
-                                    <div className="card">
-                                        <div className="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseFive">
-                                            Colors
-                                        </a>
-                                        </div>
-                                        <div
-                                        id="collapseFive"
-                                        className="collapse show"
-                                        data-parent="#accordionExample"
-                                        >
-                                        <div className="card-body">
-                                            <div className="shop__sidebar__color">
-                                            <label className="c-1" htmlFor="sp-1">
-                                                <input type="radio" id="sp-1" />
-                                            </label>
-                                            <label className="c-2" htmlFor="sp-2">
-                                                <input type="radio" id="sp-2" />
-                                            </label>
-                                            <label className="c-3" htmlFor="sp-3">
-                                                <input type="radio" id="sp-3" />
-                                            </label>
-                                            <label className="c-4" htmlFor="sp-4">
-                                                <input type="radio" id="sp-4" />
-                                            </label>
-                                            <label className="c-5" htmlFor="sp-5">
-                                                <input type="radio" id="sp-5" />
-                                            </label>
-                                            <label className="c-6" htmlFor="sp-6">
-                                                <input type="radio" id="sp-6" />
-                                            </label>
-                                            <label className="c-7" htmlFor="sp-7">
-                                                <input type="radio" id="sp-7" />
-                                            </label>
-                                            <label className="c-8" htmlFor="sp-8">
-                                                <input type="radio" id="sp-8" />
-                                            </label>
-                                            <label className="c-9" htmlFor="sp-9">
-                                                <input type="radio" id="sp-9" />
-                                            </label>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
+                                  
                                     <div className="card">
                                         <div className="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseSix">
-                                            Tags
+                                            Movement
                                         </a>
                                         </div>
                                         <div
@@ -188,13 +145,9 @@ export function Catalog(){
                                         >
                                         <div className="card-body">
                                             <div className="shop__sidebar__tags">
-                                            <a href="#">Product</a>
-                                            <a href="#">Bags</a>
-                                            <a href="#">Shoes</a>
-                                            <a href="#">Fashio</a>
-                                            <a href="#">Clothing</a>
-                                            <a href="#">Hats</a>
-                                            <a href="#">Accessories</a>
+                                            <a href="#">Automatic</a>
+                                            <a href="#">Quartz</a>
+                                            <a href="#">Mechanical</a>
                                             </div>
                                         </div>
                                         </div>
@@ -208,7 +161,7 @@ export function Catalog(){
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                 <div className="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
+                                    <p>Showing 1–9 of 126 results</p>
                                 </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6">
