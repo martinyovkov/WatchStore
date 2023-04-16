@@ -9,11 +9,13 @@ import { Register } from './Components/Authentication/Register';
 import { Login } from './Components/Authentication/Login';
 import { CreateWatch } from './Components/Product/Create/CreateWatch';
 import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
+import { Loader } from './Components/Loader/Loader';
 
 
 function App() {
   return (
     <div className="App">
+        <Loader/>
         <Header></Header>
 
         <Routes>
