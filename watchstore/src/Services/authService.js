@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = 'http://localhost:3030/users';
+const baseUrl = 'https://baas.kinvey.com/appdata/kid_r1DdLNdGh';
 
 export const login = (email, password) => 
     request.post(`${baseUrl}/login`, { email, password });

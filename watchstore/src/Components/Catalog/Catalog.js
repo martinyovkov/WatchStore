@@ -1,9 +1,21 @@
 import { Heading } from "./Heading/Heading";
 import { Poster } from "../Product/Poster/WatchPoster";
+import * as watchService from '../../Services/watchService';
+import { useEffect, useState } from "react";
 
 export function Catalog(){
 
-    const bestSellers = [Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster, Poster];
+    const [watches, setWatches] = useState([]);
+
+    useEffect(()=>{
+       watchService.getAll()
+        .then(result => {
+            setWatches(result);
+        })
+    },[])
+    
+
+    console.log(watches);
     return(
         <>
             <Heading></Heading>
@@ -178,11 +190,13 @@ export function Catalog(){
                             </div>
                             <div className="row">
                                 {
-                                    bestSellers.map(x=> 
-                                        <div className="col-lg-4 col-md-6 col-sm-6">   
-                                            <Poster/>
-                                        </div>
-                                    )
+                                    watches.length > 0
+                                        ? watches.map(x => 
+                                            <div className="col-lg-4 col-md-6 col-sm-6">
+                                                <Poster key={x._id} watch={x} />
+                                                </div>
+                                        )
+                                        : <h3 className="no-articles">No watches added yet</h3>
                                 }
 
 
