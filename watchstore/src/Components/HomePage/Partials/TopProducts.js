@@ -1,8 +1,12 @@
+import { WatchContext } from "../../../Contexts/watchContetx";
 import { Poster } from "../../Product/Poster/WatchPoster";
+import { useContext } from "react";
 
 export function TopProducts(){
 
-    const bestSellers = [Poster, Poster, Poster, Poster]
+
+    const {watches} = useContext(WatchContext);
+    //const bestSellers = [Poster, Poster, Poster, Poster]
 
     return(
         <section className="product spad">
@@ -18,9 +22,9 @@ export function TopProducts(){
                 </div>
                 <div className="row product__filter">
                     {
-                        bestSellers.map(x=> 
+                        watches.map(x=> 
                             <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">   
-                                <Poster/>
+                                <Poster key={x._id} watch={x} />
                             </div>
                         )
                     }

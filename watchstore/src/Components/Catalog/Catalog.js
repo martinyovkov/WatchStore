@@ -3,19 +3,9 @@ import { Poster } from "../Product/Poster/WatchPoster";
 import * as watchService from '../../Services/watchService';
 import { useEffect, useState } from "react";
 
-export function Catalog(){
-
-    const [watches, setWatches] = useState([]);
-
-    useEffect(()=>{
-       watchService.getAll()
-        .then(result => {
-            setWatches(result);
-        })
-    },[])
+export function Catalog({watches}){
     
 
-    console.log(watches);
     return(
         <>
             <Heading></Heading>
