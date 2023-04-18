@@ -1,10 +1,12 @@
 import './Auth.scss';
 import { useNavigate } from 'react-router-dom';
 import * as authService from '../../Services/authService';
+import { AuthContext } from '../../Contexts/authContext';
+import { useContext } from 'react';
  
 export function Register(){
 
-    //const { userLogin } = useContext(AuthContext);
+    const { userLogin } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = (e) => {
@@ -22,7 +24,7 @@ export function Register(){
 
         authService.register(username, password)
             .then(authData => {
-                //userLogin(authData);
+                userLogin(authData);
                 console.log(authData);
                 navigate('/');
             });
