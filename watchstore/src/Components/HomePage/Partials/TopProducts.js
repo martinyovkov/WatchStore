@@ -6,7 +6,7 @@ export function TopProducts(){
 
 
     const {watches} = useContext(WatchContext);
-    //const bestSellers = [Poster, Poster, Poster, Poster]
+    const bestWatches = watches.slice(0, 4)
     
 
     return(
@@ -23,7 +23,7 @@ export function TopProducts(){
                 </div>
                 <div className="row product__filter">
                     {
-                        watches.map(x=> 
+                        bestWatches.map(x=> 
                             <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">   
                                 <Poster key={x._id} watch={x} />
                             </div>

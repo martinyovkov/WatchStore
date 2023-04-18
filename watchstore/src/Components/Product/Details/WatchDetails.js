@@ -1,19 +1,44 @@
 import { Link } from "react-router-dom";
 import * as watchService from '../../../Services/watchService';
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {AuthContext} from '../../../Contexts/authContext';
+import { WatchContext } from "../../../Contexts/watchContetx";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-export function WatchDetails(){
-
+export function WatchDetails() {
+	const navigate = useNavigate();
 	const { watchId } = useParams();
-    const [currentWatch, setCurrentWatch] = useState({});
+    //const [currentWatch, setCurrentWatch] = useState({});
 
-    useEffect(() => {
-        watchService.getOne(watchId)
-            .then(result => {
-                setCurrentWatch(result);
-            });
-    })
+	const { user } = useContext(AuthContext);
+	const { watches, watchRemove } = useContext(WatchContext);
+
+	
+	const currentWatch = watches.find(x => x._id === watchId );
+
+	const isOwner = user._id === currentWatch._acl.creator;
+
+	const watchDeleteHandler = async () => {
+        const confirmation = window.confirm('Are you sure you want to delete this watch?');
+		
+
+        if (confirmation) {
+            await watchService.remove(watchId)
+                .then(() => {
+                    watchRemove(watchId);
+                    navigate('/catalog');
+                })
+        }
+	}
+
+    // useEffect(() => {
+    //     watchService.getOne(watchId)
+    //         .then(result => {
+    //             setCurrentWatch(result);
+    //         });
+    // }, [watchId]);
+
 
 	return(
 		<section className="shop-details">
@@ -101,24 +126,27 @@ export function WatchDetails(){
 				<div className="row d-flex justify-content-center">
 					<div className="col-lg-8">
 					<div className="product__details__text">
-						<h4>Hooded thermal anorak</h4>
+						<h4>{currentWatch.Name}</h4>
 						<h3>
 							${currentWatch.Price} {/* <span>370.00</span> */}
 						</h3>
 						<p>
 							{currentWatch.Description}
 						</p>
-						<div className="product__details__option"> 
-							<Link href="#" className="primary-btn" style= {{backgroundColor: 'blue'}}>
-								Edit
-							</Link>
-							<Link href="#" className="primary-btn" style= {{backgroundColor: 'red'}}>
-								Delete
-							</Link>
 
-						</div>
+						{isOwner && 
+							<div className="product__details__option"> 
+								<Link to={`/watches/${watchId}/edit`} className="primary-btn" style= {{backgroundColor: '#80bfff', marginRight: '15px'}}>
+									Edit
+								</Link>
+								<Link to={`/watches/${watchId}/delete`} className="primary-btn" style= {{backgroundColor: '#ff3333'}} onClick={watchDeleteHandler}>
+									Delete
+								</Link>
+							</div>
+						}
+						
 						<div className="product__details__cart__option">
-							<Link href="#" className="primary-btn">
+							<Link to="#" className="primary-btn">
 								add to cart
 							</Link>
 						</div>
@@ -138,6 +166,9 @@ export function WatchDetails(){
 							</li>
 							<li>
 								<span>Movement:</span> {currentWatch.Movement}
+							</li>
+							<li>
+								<span>Water Resisatnce:</span> {currentWatch.WaterResistance}m
 							</li>
 						</ul>
 						</div>

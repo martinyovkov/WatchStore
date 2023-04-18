@@ -1,22 +1,32 @@
-import './Create.scss';
+import './Edit.scss';
 
 import { WatchContext } from "../../../Contexts/watchContetx";
 import { useContext } from "react";
 import * as watchService from '../../../Services/watchService';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export function CreateWatch() {
-    const { watchAdd } = useContext(WatchContext);
+export function EditWatch() {
+    const navigate = useNavigate();
 
-    const onSubmit = (e) => {
+    const { watches, watchEdit } = useContext(WatchContext);
+
+    const { watchId } = useParams();
+
+    const currentWatch = watches.find(x => x._id === watchId );
+
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         const watchData = Object.fromEntries(new FormData(e.target));
 
-        watchService.create(watchData)
+        await watchService.edit(watchId, watchData)
             .then(result => {
-                watchAdd(result)
+                watchEdit(watchId, result)
             });
+
+        navigate(`/watches/${watchId}`);
     };
     return(
          <> 
@@ -25,10 +35,10 @@ export function CreateWatch() {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="breadcrumb__text">
-                                <h4>Create offer</h4>
+                                <h4>Edit offer</h4>
                                 <div className="breadcrumb__links">
-                                    <Link to="/">Home</Link>
-                                    <span>Sell</span>
+                                    <Link to={`/watches/${watchId}`}>Watch Details</Link>
+                                    <span>Edit</span>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +55,7 @@ export function CreateWatch() {
                                     <form onSubmit={onSubmit}>
                                         <div className="row center">
                                             <div className="col-lg-8 text-center">
-                                                <input type="text" name="Name" placeholder="Name" />
+                                                <input type="text" name="Name" defaultValue={currentWatch.Name} placeholder="Name" />
                                             </div>
                                             <div className="col-lg-8">
                                                 <label htmlFor="category" style={{color: 'grey'}}>Category</label>
@@ -65,20 +75,20 @@ export function CreateWatch() {
                                                 </select>
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" name="WaterResistance" placeholder="Water resistance" /> <span style={{marginLeft: "-30px", color: 'grey'}}>m</span>
+                                                <input type="text" name="WaterResistance" defaultValue={currentWatch.WaterResistance} placeholder="Water resistance" /> <span style={{marginLeft: "-30px", color: 'grey'}}>m</span>
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" name="Price" placeholder="Price" /> <span style={{marginLeft: "-30px", color: 'grey'}}>$</span>
+                                                <input type="text" name="Price" defaultValue={currentWatch.Price} placeholder="Price" /> <span style={{marginLeft: "-30px", color: 'grey'}}>$</span>
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" name="ImageUrl" placeholder="Image Url" />
+                                                <input type="text" name="ImageUrl" defaultValue={currentWatch.ImageUrl} placeholder="Image Url" />
                                             </div>
                                             <div className="col-lg-8">
-                                            <textarea name="Description" placeholder="Description"></textarea>
+                                            <textarea name="Description" defaultValue={currentWatch.Description} placeholder="Description"></textarea>
                                             </div>
                                             <div className="col-lg-12 text-center">
                                                 <button type="submit" className="site-btn">
-                                                    Create
+                                                    Edit
                                                 </button>
                                             </div>
                                         </div>

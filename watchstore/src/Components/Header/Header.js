@@ -34,12 +34,13 @@ export function Header() {
                                 <li>
                                     <NavLink to="/catalog">Catalog</NavLink>
                                 </li>
-                                <li>
-                                    <NavLink to="/about">About</NavLink>
-                                </li>
+                                
 
                                 {user.username
                                     ? <>
+                                    <li>
+                                        <NavLink to="/user">Profile</NavLink>
+                                    </li>
                                         <li>
                                             <NavLink to="/watches/create">Sell Watch</NavLink>
                                         </li>

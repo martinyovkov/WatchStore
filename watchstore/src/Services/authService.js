@@ -4,9 +4,7 @@ const baseUrl = 'https://baas.kinvey.com/user/kid_r1DdLNdGh';
 const appCredetentials = 'Basic a2lkX3IxRGRMTmRHaDpmOTE0ZGU0MWZjMWU0YWFiOGZjNzljMzM0MmU4NWUwZg==';
 
 export const login = async (username, password) => {
-
-    try { 
-        
+    try {     
         const data = {username, password};
 
         const response = fetch(`${baseUrl}/login`, {
@@ -39,7 +37,7 @@ export const logout = async (accessToken) => {
     try {
         const response = await fetch(`${baseUrl}/logout`, {
             headers: {
-                'X-Authorization': accessToken
+                'Authorization': accessToken
             }
         });
 
