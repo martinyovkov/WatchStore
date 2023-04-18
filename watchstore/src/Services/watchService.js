@@ -4,7 +4,7 @@ const baseUrl = 'https://baas.kinvey.com/appdata/kid_r1DdLNdGh/Watches';
 
 const viewerCredetntials = 'Basic Y2xpZW50OjEyMzQ1Ng==';
 
-export const getAll =  () => {
+export const getAll = async () => {
    const response = fetch(baseUrl, {
         headers:{
              'content-type': 'application/json',
@@ -13,7 +13,7 @@ export const getAll =  () => {
        
     }).then(result => result.json())
 
-    return  response;
+    return await response;
 
 };
 

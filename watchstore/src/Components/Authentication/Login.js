@@ -1,7 +1,33 @@
 import './Auth.scss';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Contexts/authContext';
+import { useNavigate } from 'react-router-dom';
+import * as authService from '../../Services/authService';
 
 
 export function Login(){
+    const { userLogin } = useContext(AuthContext);
+    const [errMessage, setErrMessage] = useState('');
+    const navigate = useNavigate();
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const {
+            username,
+            password,
+        } = Object.fromEntries(new FormData(e.target));
+
+        authService.login(username, password)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/');
+            })
+            .catch((error) => {
+                setErrMessage(error.message);
+            });
+    };
+
     return(
         <> 
             <section className="breadcrumb-option">
@@ -26,14 +52,21 @@ export function Login(){
                             <div className="blog__details__content">
                                 <div className="blog__details__comment">
                                     
-                                    <form action="#">
+                                    <form onSubmit={onSubmit}>
                                         <div className="row center">
                                             <div className="col-lg-8 text-center">
-                                                <input type="text" placeholder="Email" />
+                                                <input type="text" name='username' placeholder="Username" />
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" placeholder="Password" />
+                                                <input type="password" name='password' placeholder="Password" />
                                             </div>
+
+                                            {errMessage
+                                                ?
+                                                <div className='col-lg-8' style={{color: 'red'}}> {errMessage} </div>
+                                                :<></>
+                                            }
+                                            
                                             <div className="col-lg-12 text-center">
                                                 <button type="submit" className="site-btn">
                                                     Login

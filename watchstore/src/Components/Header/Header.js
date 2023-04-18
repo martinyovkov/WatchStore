@@ -1,8 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
-import './Header.scss';
+//import './Header.scss';
 import {useState} from 'react';
+import { AuthContext } from '../../Contexts/authContext';
+import { useContext } from 'react';
 
 export function Header() {
+    const {user} = useContext(AuthContext);
+
     const [searchOpened, SetSearchOpened] = useState(false);
 
     const OnClickHandler = () =>{
@@ -33,29 +37,46 @@ export function Header() {
                                 <li>
                                     <NavLink to="/about">About</NavLink>
                                 </li>
-                                <li>
-                                    <NavLink to="#">Profile</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/watches/create">Sell Watch</NavLink>
-                                </li>
+
+                                {user.username
+                                    ? <>
+                                        <li>
+                                            <NavLink to="/watches/create">Sell Watch</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink to="/logout">Logout</NavLink>
+                                        </li> 
+                                      </>
+                                    : <>
+                                        <li>
+                                            <NavLink to="/login">Login</NavLink>
+                                        </li> 
+                                        <li>
+                                            <NavLink to="/register">Register</NavLink>
+                                        </li>
+                                    </>
+                                }
+                                
+                                
                             </ul>
                         </nav>
                     </div>
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
-                        <Link to="" className="search-switch" >
-                            <img src="/img/icon/search.png" onClick={OnClickHandler} alt="" />
-                        </Link>
-                        <Link to="/user">
-                            <img src="/img/icon/heart.png" alt="" />
-                        </Link>
-                        <Link to="/user/shoppingcart">
-                            <img src="/img/icon/cart.png" alt="" /> <span>0</span>
-                        </Link>
-                        <div className="price">$0.00</div>
+                            <Link to="" className="search-switch" >
+                                <img src="/img/icon/search.png" onClick={OnClickHandler} alt="" />
+                            </Link>
+                            <Link to="/user">
+                                <img src="/img/icon/heart.png" alt="" />
+                            </Link>
+                            <Link to="/user/shoppingcart">
+                                <img src="/img/icon/cart.png" alt="" /> <span>0</span>
+                            </Link>
+                            <div className="price">$0.00</div>
                         </div>
                     </div>
+
+
                     </div>
                     <div className="canvas__open">
                     <i className="fa fa-bars" />

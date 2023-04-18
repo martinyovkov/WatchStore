@@ -40,25 +40,16 @@ export function Catalog({watches}){
                                             <div className="shop__sidebar__categories">
                                             <ul className="nice-scroll">
                                                 <li>
-                                                <Link to="#">Men (20)</Link>
+                                                <Link to="#">Luxury (20)</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Women (20)</Link>
+                                                <Link to="#">Casual (20)</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Bags (20)</Link>
+                                                <Link to="#">Dress (20)</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Clothing (20)</Link>
-                                                </li>
-                                                <li>
-                                                <Link to="#">Shoes (20)</Link>
-                                                </li>
-                                                <li>
-                                                <Link to="#">Accessories (20)</Link>
-                                                </li>
-                                                <li>
-                                                <Link to="#">Kids (20)</Link>
+                                                <Link to="#">Retro (20)</Link>
                                                 </li>
                                             </ul>
                                             </div>
@@ -80,16 +71,16 @@ export function Catalog({watches}){
                                             <div className="shop__sidebar__brand">
                                             <ul>
                                                 <li>
-                                                <Link to="#">Louis Vuitton</Link>
+                                                <Link to="#">Tissot</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Chanel</Link>
+                                                <Link to="#">Rolex</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Hermes</Link>
+                                                <Link to="#">Omega</Link>
                                                 </li>
                                                 <li>
-                                                <Link to="#">Gucci</Link>
+                                                <Link to="#">Zodiac</Link>
                                                 </li>
                                             </ul>
                                             </div>
@@ -170,9 +161,8 @@ export function Catalog({watches}){
                                 <div className="shop__product__option__right">
                                     <p>Sort by Price:</p>
                                     <select>
-                                    <option value="">Low To High</option>
-                                    <option value="">$0 - $55</option>
-                                    <option value="">$55 - $100</option>
+                                        <option value="">Low To High</option>
+                                        <option value="">High To Low</option>
                                     </select>
                                 </div>
                                 </div>

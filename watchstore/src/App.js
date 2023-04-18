@@ -16,6 +16,7 @@ import { Loader } from './Components/Loader/Loader';
 import { WatchContext } from './Contexts/watchContetx';
 import { AuthContext } from './Contexts/authContext';
 import { useLocalStorage } from './Hooks/useLocalStorage';
+import Logout from './Components/Authentication/Logout';
 
 
 
@@ -25,7 +26,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  
+
   const userLogin = (authData) => {
     setAuth(authData);
   };
@@ -70,6 +71,7 @@ const watchEdit = (watchId, watchData) => {
 			<Route path='/watches/:watchId' element = {<WatchDetails/>} />
 			<Route path='/register' element = {<Register/>} />
 			<Route path='/login' element = {<Login/>} />
+			<Route path='/logout' element = {<Logout/>} />
 			<Route path='/user/shoppingcart' element = {<ShoppingCart/>} />
 
 			</Routes>

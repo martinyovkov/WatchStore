@@ -19,7 +19,8 @@ export function Register(){
         const confirmPassword = formData.get('repeatPassword');
 
         if (password !== confirmPassword) {
-            return;
+            //Should return message
+            return console.log("Passwords mismatch!");
         }
 
         authService.register(username, password)

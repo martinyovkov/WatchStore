@@ -3167,7 +3167,19 @@ ol {
 	border: 1px solid #e1e1e1;
 	padding-left: 20px;
 	font-size: 15px;
-	color: #b7b7b7;
+	color: #292929;
+	margin-bottom: 30px;
+	-webkit-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+}
+.blog__details__comment form select {
+	height: 50px;
+	width: 100%;
+	border: 1px solid #e1e1e1;
+	padding-left: 20px;
+	font-size: 15px;
+	color: #292929;
 	margin-bottom: 30px;
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
@@ -3205,7 +3217,7 @@ ol {
 	padding-left: 20px;
 	padding-top: 12px;
 	font-size: 15px;
-	color: #b7b7b7;
+	color: #292929;
 	margin-bottom: 24px;
 	resize: none;
 	-webkit-transition: all, 0.3s;

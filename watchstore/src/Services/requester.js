@@ -5,8 +5,8 @@ const request = async (method, url, data) => {
 
         let headers = {}
 
-        if (auth.accessToken) {
-            headers['X-Authorization'] = auth.accessToken;
+        if (auth.username) {
+            headers['Authorization'] = `Kinvey ${auth._kmd.authtoken}`;
         }
 
         let buildRequest;
