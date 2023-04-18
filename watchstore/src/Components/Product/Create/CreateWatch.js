@@ -49,10 +49,10 @@ export function CreateWatch() {
                                             <div className="col-lg-8">
                                                 <label htmlFor="category" style={{color: 'grey'}}>Category</label>
                                                 <select name="Category" id="lang">
-                                                    <option value="automatic">Luxury</option>
-                                                    <option value="mechanical">Casual</option>
-                                                    <option value="quartz">Retro</option>
-                                                    <option value="quartz">Dress</option>
+                                                    <option value="Luxury">Luxury</option>
+                                                    <option value="Casual">Casual</option>
+                                                    <option value="Retro">Retro</option>
+                                                    <option value="Dress">Dress</option>
                                                 </select>
                                             </div>
                                             <div className="col-lg-8">

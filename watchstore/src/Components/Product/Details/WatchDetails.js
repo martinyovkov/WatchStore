@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom";
+import * as watchService from '../../../Services/watchService';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 export function WatchDetails(){
+
+	const { watchId } = useParams();
+    const [currentWatch, setCurrentWatch] = useState({});
+
+    useEffect(() => {
+        watchService.getOne(watchId)
+            .then(result => {
+                setCurrentWatch(result);
+            });
+    })
+
 	return(
 		<section className="shop-details">
 			<div className="product__details__pic">
@@ -64,7 +78,7 @@ export function WatchDetails(){
 						<div className="tab-pane active" id="tabs-1" role="tabpanel">
 							<div className="product__details__pic__item">
 								{/* The products image */}
-								<img src="https://media.istockphoto.com/id/697173746/photo/luxury-watch.jpg?s=170667a&w=0&k=20&c=srwPwJOmBNhpfeHL9btTnjdmff6JO9_DAHIsH6Dqpg8=" alt="" />
+								<img src={currentWatch.ImageUrl} alt="" />
 							</div>
 						</div>
 							{/* <div className="tab-pane" id="tabs-2" role="tabpanel">
@@ -89,23 +103,29 @@ export function WatchDetails(){
 					<div className="product__details__text">
 						<h4>Hooded thermal anorak</h4>
 						<h3>
-							$270.00 <span>370.00</span>
+							${currentWatch.Price} {/* <span>370.00</span> */}
 						</h3>
 						<p>
-							Coat with quilted lining and an adjustable hood. Featuring long
-							sleeves with adjustable cuff tabs, adjustable asymmetric hem with
-							elastic side tabs and a front zip fastening with placket.
+							{currentWatch.Description}
 						</p>
-						<div className="product__details__option"></div>
+						<div className="product__details__option"> 
+							<Link href="#" className="primary-btn" style= {{backgroundColor: 'blue'}}>
+								Edit
+							</Link>
+							<Link href="#" className="primary-btn" style= {{backgroundColor: 'red'}}>
+								Delete
+							</Link>
+
+						</div>
 						<div className="product__details__cart__option">
-						<Link href="#" className="primary-btn">
-							add to cart
-						</Link>
+							<Link href="#" className="primary-btn">
+								add to cart
+							</Link>
 						</div>
 						<div className="product__details__btns__option">
-						<Link to="#">
-							<i className="fa fa-heart" /> add to wishlist
-						</Link>
+							<Link to="#">
+								<i className="fa fa-heart" /> add to wishlist
+							</Link>
 						</div>
 						<div className="product__details__last__option">
 						<h5>
@@ -114,13 +134,10 @@ export function WatchDetails(){
 						<img src="/img/shop-details/details-payment.png" alt="" />
 						<ul>
 							<li>
-								<span>SKU:</span> 3812912
+								<span>Category:</span> {currentWatch.Category}
 							</li>
 							<li>
-								<span>Categories:</span> Clothes
-							</li>
-							<li>
-								<span>Tag:</span> Clothes, Skin, Body
+								<span>Movement:</span> {currentWatch.Movement}
 							</li>
 						</ul>
 						</div>
