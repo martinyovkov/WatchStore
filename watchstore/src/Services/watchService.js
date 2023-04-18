@@ -17,8 +17,8 @@ export const getAll =  () => {
 
 };
 
-export const getOne = (gameId) => request.get(`${baseUrl}/${gameId}`);
+export const getOne = (watchId) => request.get(`${baseUrl}/${watchId}`);
 
-export const create = (gameData) => request.post(baseUrl, gameData);
+export const create = (watchData) => request.post(baseUrl, watchData);
 
-export const edit = (gameId, gameData) => request.put(`${baseUrl}/${gameId}`, gameData);
+export const edit = (watchId, watchData) => request.put(`${baseUrl}/${watchId}`, watchData);

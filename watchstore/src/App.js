@@ -1,5 +1,5 @@
 import './App.scss';
-import { Router, Route, useNavigate, Routes} from 'react-router-dom';
+import { Route, useNavigate, Routes} from 'react-router-dom';
 import * as watchService from './Services/watchService';
 import { useEffect, useState } from "react";
 
@@ -14,12 +14,39 @@ import { CreateWatch } from './Components/Product/Create/CreateWatch';
 import { ShoppingCart } from './Components/ShoppingCart/ShoppingCart';
 import { Loader } from './Components/Loader/Loader';
 import { WatchContext } from './Contexts/watchContetx';
+import { AuthContext } from './Contexts/authContext';
+import { useLocalStorage } from './Hooks/useLocalStorage';
 
 
 
 function App() {
-
   const [watches, setWatches] = useState([]);
+  const [auth, setAuth] = useLocalStorage('auth');
+
+  const navigate = useNavigate();
+
+  
+  const userLogin = (authData) => {
+    setAuth(authData);
+  };
+
+  const userLogout = () => {
+      setAuth({});  
+  };
+
+
+  const watchAdd = (watchData) => {
+    setWatches(state => [
+        ...state,
+        watchData,
+    ]);
+
+    navigate('/catalog');
+};
+
+const watchEdit = (watchId, watchData) => {
+    setWatches(state => state.map(x => x._id === watchId ? watchData : x));
+}
 
   useEffect(()=>{
      watchService.getAll()
@@ -30,26 +57,28 @@ function App() {
 
 
   return (
-    <div className="App">
-        <Loader/>
-        <Header></Header>
+	<AuthContext.Provider value= {{user: auth, userLogin, userLogout}}>
+		<div className="App">
+			<Loader/>
+			<Header></Header>
 
-        <WatchContext.Provider value={{watches}}>
-        <Routes>
-          <Route path='/' element = {<HomePage/>} />
-          <Route path='/catalog' element = {<Catalog watches = {watches}/>} />
-          <Route path='/watches/create' element = {<CreateWatch/>} />
-          <Route path='/watches/:watchId' element = {<WatchDetails/>} />
-          <Route path='/register' element = {<Register/>} />
-          <Route path='/login' element = {<Login/>} />
-          <Route path='/user/shoppingcart' element = {<ShoppingCart/>} />
+			<WatchContext.Provider value={{watches, watchAdd, watchEdit}}>
+			<Routes>
+			<Route path='/' element = {<HomePage/>} />
+			<Route path='/catalog' element = {<Catalog watches = {watches}/>} />
+			<Route path='/watches/create' element = {<CreateWatch/>} />
+			<Route path='/watches/:watchId' element = {<WatchDetails/>} />
+			<Route path='/register' element = {<Register/>} />
+			<Route path='/login' element = {<Login/>} />
+			<Route path='/user/shoppingcart' element = {<ShoppingCart/>} />
 
-        </Routes>
+			</Routes>
 
-        </WatchContext.Provider>
+			</WatchContext.Provider>
 
-        <Footer></Footer>
-    </div>
+			<Footer></Footer>
+		</div>
+	</AuthContext.Provider>
   );
 }
 

@@ -7,6 +7,7 @@ export function TopProducts(){
 
     const {watches} = useContext(WatchContext);
     //const bestSellers = [Poster, Poster, Poster, Poster]
+    
 
     return(
         <section className="product spad">
@@ -14,9 +15,9 @@ export function TopProducts(){
                 <div className="row">
                 <div className="col-lg-12">
                     <ul className="filter__controls">
-                    <li className="active" data-filter="*">
-                        Best Sellers
-                    </li>
+                        <li className="active" data-filter="*" key={'heading'}>
+                            Best Sellers
+                        </li>
                     </ul>
                 </div>
                 </div>

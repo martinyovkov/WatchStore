@@ -23,6 +23,7 @@ export function Register(){
         authService.register(username, password)
             .then(authData => {
                 //userLogin(authData);
+                console.log(authData);
                 navigate('/');
             });
     }
@@ -56,10 +57,10 @@ export function Register(){
                                                 <input type="text" name='username' placeholder="Username" />
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" name='password' placeholder="Password" />
+                                                <input type="password" name='password' placeholder="Password" />
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="text" name='repeatPassword' placeholder="Repeat Password" />
+                                                <input type="password" name='repeatPassword' placeholder="Repeat Password" />
                                             </div>
                                             <div className="col-lg-12 text-center">
                                                 <button type="submit" className="site-btn">

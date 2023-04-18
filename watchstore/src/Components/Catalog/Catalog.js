@@ -1,7 +1,7 @@
 import { Heading } from "./Heading/Heading";
 import { Poster } from "../Product/Poster/WatchPoster";
-import * as watchService from '../../Services/watchService';
-import { useEffect, useState } from "react";
+
+import { Link } from "react-router-dom";
 
 export function Catalog({watches}){
     
@@ -27,9 +27,9 @@ export function Catalog({watches}){
                                     <div className="accordion" id="accordionExample">
                                     <div className="card">
                                         <div className="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">
+                                        <Link data-toggle="collapse" data-target="#collapseOne">
                                             Categories
-                                        </a>
+                                        </Link>
                                         </div>
                                         <div
                                         id="collapseOne"
@@ -40,25 +40,25 @@ export function Catalog({watches}){
                                             <div className="shop__sidebar__categories">
                                             <ul className="nice-scroll">
                                                 <li>
-                                                <a href="#">Men (20)</a>
+                                                <Link to="#">Men (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Women (20)</a>
+                                                <Link to="#">Women (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Bags (20)</a>
+                                                <Link to="#">Bags (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Clothing (20)</a>
+                                                <Link to="#">Clothing (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Shoes (20)</a>
+                                                <Link to="#">Shoes (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Accessories (20)</a>
+                                                <Link to="#">Accessories (20)</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Kids (20)</a>
+                                                <Link to="#">Kids (20)</Link>
                                                 </li>
                                             </ul>
                                             </div>
@@ -67,9 +67,9 @@ export function Catalog({watches}){
                                     </div>
                                     <div className="card">
                                         <div className="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseTwo">
+                                        <Link data-toggle="collapse" data-target="#collapseTwo">
                                             Branding
-                                        </a>
+                                        </Link>
                                         </div>
                                         <div
                                         id="collapseTwo"
@@ -80,16 +80,16 @@ export function Catalog({watches}){
                                             <div className="shop__sidebar__brand">
                                             <ul>
                                                 <li>
-                                                <a href="#">Louis Vuitton</a>
+                                                <Link to="#">Louis Vuitton</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Chanel</a>
+                                                <Link to="#">Chanel</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Hermes</a>
+                                                <Link to="#">Hermes</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">Gucci</a>
+                                                <Link to="#">Gucci</Link>
                                                 </li>
                                             </ul>
                                             </div>
@@ -98,9 +98,9 @@ export function Catalog({watches}){
                                     </div>
                                     <div className="card">
                                         <div className="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseThree">
+                                        <Link data-toggle="collapse" data-target="#collapseThree">
                                             Filter Price
-                                        </a>
+                                        </Link>
                                         </div>
                                         <div
                                         id="collapseThree"
@@ -111,22 +111,22 @@ export function Catalog({watches}){
                                             <div className="shop__sidebar__price">
                                             <ul>
                                                 <li>
-                                                <a href="#">$0.00 - $50.00</a>
+                                                <Link to="#">$0.00 - $50.00</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">$50.00 - $100.00</a>
+                                                <Link to="#">$50.00 - $100.00</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">$100.00 - $150.00</a>
+                                                <Link to="#">$100.00 - $150.00</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">$150.00 - $200.00</a>
+                                                <Link to="#">$150.00 - $200.00</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">$200.00 - $250.00</a>
+                                                <Link to="#">$200.00 - $250.00</Link>
                                                 </li>
                                                 <li>
-                                                <a href="#">250.00+</a>
+                                                <Link to="#">250.00+</Link>
                                                 </li>
                                             </ul>
                                             </div>
@@ -136,9 +136,9 @@ export function Catalog({watches}){
                                   
                                     <div className="card">
                                         <div className="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseSix">
+                                        <Link data-toggle="collapse" data-target="#collapseSix">
                                             Movement
-                                        </a>
+                                        </Link>
                                         </div>
                                         <div
                                         id="collapseSix"
@@ -147,9 +147,9 @@ export function Catalog({watches}){
                                         >
                                         <div className="card-body">
                                             <div className="shop__sidebar__tags">
-                                            <a href="#">Automatic</a>
-                                            <a href="#">Quartz</a>
-                                            <a href="#">Mechanical</a>
+                                            <Link to="#">Automatic</Link>
+                                            <Link to="#">Quartz</Link>
+                                            <Link to="#">Mechanical</Link>
                                             </div>
                                         </div>
                                         </div>
@@ -194,13 +194,13 @@ export function Catalog({watches}){
                             <div className="row">
                             <div className="col-lg-12">
                                 <div className="product__pagination">
-                                <a className="active" href="#">
+                               <Link className="active" to="#">
                                     1
-                                </a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
+                                </Link>
+                                <Link to="#">2</Link>
+                                <Link to="#">3</Link>
                                 <span>...</span>
-                                <a href="#">21</a>
+                                <Link to="#">21</Link>
                                 </div>
                             </div>
                             </div>

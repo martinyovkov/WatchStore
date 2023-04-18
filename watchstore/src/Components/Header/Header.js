@@ -44,7 +44,7 @@ export function Header() {
                     </div>
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
-                        <Link to="#" className="search-switch" >
+                        <Link to="" className="search-switch" >
                             <img src="/img/icon/search.png" onClick={OnClickHandler} alt="" />
                         </Link>
                         <Link to="/user">

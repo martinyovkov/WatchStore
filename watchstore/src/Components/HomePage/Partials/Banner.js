@@ -11,7 +11,7 @@ export function Banner() {
                     <img src="img/banner/banner1.jpg" alt="" />
                 </div>
                 <div className="banner__item__text">
-                    <h2>Clothing Collections 2030</h2>
+                    <h2>Special Watch Collections</h2>
                     <Link to="/catalog">Shop now</Link>
                 </div>
                 </div>
@@ -33,7 +33,7 @@ export function Banner() {
                     <img src="img/banner/banner2.webp" alt="" />
                 </div>
                 <div className="banner__item__text">
-                    <h2>Shoes Spring 2030</h2>
+                    <h2>Luxury Watches</h2>
                     <Link to="/catalog">Shop now</Link>
                 </div>
                 </div>
