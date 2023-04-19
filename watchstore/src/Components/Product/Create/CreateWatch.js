@@ -20,7 +20,7 @@ export function CreateWatch() {
         if (watchData.WaterResistance<10 || watchData.WaterResistance>200 ) {
             return setErrMessage(" Water Resistance should be number between 10 and 200!");
         }
-        if (watchData.Price<10 || watchData.Price>200 ) {
+        if (watchData.Price<10 || watchData.Price>2000000 ) {
             return setErrMessage(" Price should be number between 10 and 2000000!");
         }
         
