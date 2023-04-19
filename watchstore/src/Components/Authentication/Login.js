@@ -18,6 +18,13 @@ export function Login(){
             password,
         } = Object.fromEntries(new FormData(e.target));
 
+        if (username.length<4 || username.length>16) {
+            return setErrMessage(" Username should be between 4 and 16 characters!");
+        }
+        if (password.length<6 || password.length>12) {
+            return setErrMessage(" Password should be between 6 and 12 characters!");
+        }
+
         authService.login(username, password)
             .then(authData => {
                 userLogin(authData);

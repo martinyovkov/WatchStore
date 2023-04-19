@@ -154,7 +154,7 @@ export function Catalog({watches}){
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-sm-6">
                                 <div className="shop__product__option__left">
-                                    <p>Showing 1–9 of 126 results</p>
+                                    <p>Showing 1–9 of {watches.length} results</p>
                                 </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-6">

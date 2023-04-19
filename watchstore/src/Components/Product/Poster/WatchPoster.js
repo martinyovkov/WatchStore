@@ -1,11 +1,20 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
+import * as authService from '../../../Services/authService';
+import { AuthContext } from "../../../Contexts/authContext";
+import { useContext } from "react";
 
 export function Poster({watch}){
+    const {user} = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     const PosterClickHandler = () =>{
         navigate(`/watches/${watch._id}`);
     };
+
+    const LikeHandler =  () =>{
+        authService.addLikedWatch(user, watch._id);
+    }
     return (
             
                 <div className="product__item">
@@ -19,7 +28,7 @@ export function Poster({watch}){
                         >
                             <ul className="product__hover">
                                 <li>
-                                    <Link to="">
+                                    <Link to="" onClick={LikeHandler}>
                                     <img src="img/icon/heart.png" alt="" />
                                     </Link>
                                 </li>
@@ -28,9 +37,9 @@ export function Poster({watch}){
                                         
                     <div className="product__item__text">
                         <h6>{watch.Name}</h6>
-                        <a href="#" className="add-cart">
+                        <Link to="#" className="add-cart">
                         + Add To Cart
-                        </a>
+                        </Link>
                         <h5>${watch.Price}</h5>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import * as request from "./requester";
 
 const baseUrl = 'https://baas.kinvey.com/user/kid_r1DdLNdGh';
 
@@ -65,6 +66,16 @@ export const register = (username, password) =>{
     } catch (error) {
         console.log(error);
     }
+   
+}
+
+export const addLikedWatch = (userId, newArr) =>{
+  
+         const data = {
+            'likedWacthes': newArr
+         }
+
+        return request.put(`${baseUrl}/${userId}`, data);
    
 }
     

@@ -9,7 +9,14 @@ export function UserPage(){
     const {user} = useContext(AuthContext);
     const {watches} = useContext(WatchContext);
 
+    const yourWatchesIds = user.likedWacthes;
     const yourWatches = [];
+    yourWatchesIds.forEach(id => {
+        const watch = watches.find(x=> x._id === id);
+        if (watch) {
+            yourWatches.push(watch);
+        }
+    });
 
 
     return (

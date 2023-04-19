@@ -5,6 +5,7 @@ import {AuthContext} from '../../../Contexts/authContext';
 import { WatchContext } from "../../../Contexts/watchContetx";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import * as authService from '../../../Services/authService';
 
 export function WatchDetails() {
 	const navigate = useNavigate();
@@ -31,6 +32,17 @@ export function WatchDetails() {
                 })
         }
 	}
+
+	const LikeHandler =  async () =>{
+
+		console.log(user.likedWacthes);
+
+		const newArr = user.likedWacthes.push(currentWatch._id);
+		console.log(newArr);
+
+        const response = authService.addLikedWatch(user._id, newArr);
+		console.log( await response);
+    }
 
     // useEffect(() => {
     //     watchService.getOne(watchId)
@@ -151,7 +163,7 @@ export function WatchDetails() {
 							</Link>
 						</div>
 						<div className="product__details__btns__option">
-							<Link to="#">
+							<Link to="#" onClick={LikeHandler}>
 								<i className="fa fa-heart" /> add to wishlist
 							</Link>
 						</div>

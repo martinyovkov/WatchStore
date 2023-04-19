@@ -1,17 +1,36 @@
 import './Create.scss';
 
 import { WatchContext } from "../../../Contexts/watchContetx";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import * as watchService from '../../../Services/watchService';
 import { Link } from 'react-router-dom';
 
 export function CreateWatch() {
     const { watchAdd } = useContext(WatchContext);
+    const [errMessage, setErrMessage] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const watchData = Object.fromEntries(new FormData(e.target));
+
+        if (watchData.Name.length<4 || watchData.Name.length>25) {
+            return setErrMessage(" Name should be between 4 and 25 characters!");
+        }
+        if (watchData.WaterResistance<10 || watchData.WaterResistance>200 ) {
+            return setErrMessage(" Water Resistance should be number between 10 and 200!");
+        }
+        if (watchData.Price<10 || watchData.Price>200 ) {
+            return setErrMessage(" Price should be number between 10 and 2000000!");
+        }
+        
+        const regex = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/)
+        if (!regex.test(watchData.ImageUrl)) {
+            return setErrMessage("ImageUrl should be a valid Url!");
+        }
+        if (watchData.Description.length<4 || watchData.Description.length>200) {
+            return setErrMessage(" Description should be between 4 and 200 characters!");
+        }
 
         watchService.create(watchData)
             .then(result => {
@@ -76,6 +95,11 @@ export function CreateWatch() {
                                             <div className="col-lg-8">
                                             <textarea name="Description" placeholder="Description"></textarea>
                                             </div>
+                                            {errMessage
+                                                ?
+                                                <div className='col-lg-8' style={{color: 'red'}}> {errMessage} </div>
+                                                :<></>
+                                            }
                                             <div className="col-lg-12 text-center">
                                                 <button type="submit" className="site-btn">
                                                     Create
