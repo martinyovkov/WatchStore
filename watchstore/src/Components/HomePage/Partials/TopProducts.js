@@ -24,8 +24,8 @@ export function TopProducts(){
                 <div className="row product__filter">
                     {
                         bestWatches.map(x=> 
-                            <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">   
-                                <Poster key={x._id} watch={x} />
+                            <div key={x._id} className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">   
+                                <Poster  watch={x} />
                             </div>
                         )
                     }

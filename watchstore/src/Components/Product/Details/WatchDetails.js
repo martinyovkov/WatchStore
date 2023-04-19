@@ -10,15 +10,13 @@ import * as authService from '../../../Services/authService';
 export function WatchDetails() {
 	const navigate = useNavigate();
 	const { watchId } = useParams();
-    //const [currentWatch?, setCurrentWatch] = useState({});
 
-	const { user } = useContext(AuthContext);
+	const { user, userLogin } = useContext(AuthContext);
 	const { watches, watchRemove } = useContext(WatchContext);
 
 	
 	const currentWatch = watches.find(x => x._id === watchId );
 
-	console.log(currentWatch);
 	const isOwner = user._id === currentWatch?._acl.creator;
 
 	const watchDeleteHandler = async () => {
@@ -36,21 +34,17 @@ export function WatchDetails() {
 
 	const LikeHandler =  async () =>{
 
-		console.log(user.likedWacthes);
+		if (user.likedWacthes.includes(currentWatch?._id)) {
+			return;
+		}else {
+			user.likedWacthes.push(currentWatch?._id);
+			const newArr = user.likedWacthes
 
-		const newArr = user.likedWacthes.push(currentWatch?._id);
-		console.log(newArr);
-
-        const response = authService.addLikedWatch(user._id, newArr);
-		console.log( await response);
+        	const response = await authService.addLikedWatch(user._id, newArr);
+			userLogin(response);
+		}
+ 		
     }
-
-    // useEffect(() => {
-    //     watchService.getOne(watchId)
-    //         .then(result => {
-    //             setCurrentWatch(result);
-    //         });
-    // }, [watchId]);
 
 
 	return(

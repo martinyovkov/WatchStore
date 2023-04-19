@@ -172,8 +172,8 @@ export function Catalog({watches}){
                                 {
                                     watches.length > 0
                                         ? watches.map(x => 
-                                            <div className="col-lg-4 col-md-6 col-sm-6">
-                                                <Poster key={x._id} watch={x} />
+                                            <div key={x._id} className="col-lg-4 col-md-6 col-sm-6">
+                                                <Poster  watch={x} />
                                                 </div>
                                         )
                                         : <h3 className="no-articles">No watches added yet</h3>
