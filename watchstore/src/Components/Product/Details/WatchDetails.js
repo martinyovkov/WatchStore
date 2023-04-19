@@ -10,7 +10,7 @@ import * as authService from '../../../Services/authService';
 export function WatchDetails() {
 	const navigate = useNavigate();
 	const { watchId } = useParams();
-    //const [currentWatch, setCurrentWatch] = useState({});
+    //const [currentWatch?, setCurrentWatch] = useState({});
 
 	const { user } = useContext(AuthContext);
 	const { watches, watchRemove } = useContext(WatchContext);
@@ -18,7 +18,8 @@ export function WatchDetails() {
 	
 	const currentWatch = watches.find(x => x._id === watchId );
 
-	const isOwner = user._id === currentWatch._acl.creator;
+	console.log(currentWatch);
+	const isOwner = user._id === currentWatch?._acl.creator;
 
 	const watchDeleteHandler = async () => {
         const confirmation = window.confirm('Are you sure you want to delete this watch?');
@@ -37,7 +38,7 @@ export function WatchDetails() {
 
 		console.log(user.likedWacthes);
 
-		const newArr = user.likedWacthes.push(currentWatch._id);
+		const newArr = user.likedWacthes.push(currentWatch?._id);
 		console.log(newArr);
 
         const response = authService.addLikedWatch(user._id, newArr);
@@ -115,7 +116,7 @@ export function WatchDetails() {
 						<div className="tab-pane active" id="tabs-1" role="tabpanel">
 							<div className="product__details__pic__item">
 								{/* The products image */}
-								<img src={currentWatch.ImageUrl} alt="" />
+								<img src={currentWatch?.ImageUrl} alt="" />
 							</div>
 						</div>
 							{/* <div className="tab-pane" id="tabs-2" role="tabpanel">
@@ -138,12 +139,12 @@ export function WatchDetails() {
 				<div className="row d-flex justify-content-center">
 					<div className="col-lg-8">
 					<div className="product__details__text">
-						<h4>{currentWatch.Name}</h4>
+						<h4>{currentWatch?.Name}</h4>
 						<h3>
-							${currentWatch.Price} {/* <span>370.00</span> */}
+							${currentWatch?.Price} {/* <span>370.00</span> */}
 						</h3>
 						<p>
-							{currentWatch.Description}
+							{currentWatch?.Description}
 						</p>
 
 						{isOwner && 
@@ -174,13 +175,13 @@ export function WatchDetails() {
 						<img src="/img/shop-details/details-payment.png" alt="" />
 						<ul>
 							<li>
-								<span>Category:</span> {currentWatch.Category}
+								<span>Category:</span> {currentWatch?.Category}
 							</li>
 							<li>
-								<span>Movement:</span> {currentWatch.Movement}
+								<span>Movement:</span> {currentWatch?.Movement}
 							</li>
 							<li>
-								<span>Water Resisatnce:</span> {currentWatch.WaterResistance}m
+								<span>Water Resisatnce:</span> {currentWatch?.WaterResistance}m
 							</li>
 						</ul>
 						</div>
