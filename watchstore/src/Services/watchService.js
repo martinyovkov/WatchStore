@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = 'https://baas.kinvey.com/appdata/kid_r1DdLNdGh/Watches';
+const baseUrl = 'http://localhost:3001/watches';
 
 const viewerCredetntials = 'Basic Y2xpZW50OjEyMzQ1Ng==';
 

@@ -1,6 +1,6 @@
 import * as request from "./requester";
 
-const baseUrl = 'https://baas.kinvey.com/user/kid_r1DdLNdGh';
+const baseUrl = 'http://localhost:3001';
 
 const appCredetentials = 'Basic a2lkX3IxRGRMTmRHaDpmOTE0ZGU0MWZjMWU0YWFiOGZjNzljMzM0MmU4NWUwZg==';
 
