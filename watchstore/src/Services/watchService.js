@@ -2,13 +2,11 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3001/watches';
 
-const viewerCredetntials = 'Basic Y2xpZW50OjEyMzQ1Ng==';
 
 export const getAll = async () => {
    const response = fetch(baseUrl, {
         headers:{
              'content-type': 'application/json',
-            'Authorization': viewerCredetntials
         }
        
     }).then(result => result.json())

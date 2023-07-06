@@ -14,18 +14,18 @@ export function Login(){
         e.preventDefault();
 
         const {
-            username,
+            email,
             password,
         } = Object.fromEntries(new FormData(e.target));
 
-        if (username.length<4 || username.length>16) {
-            return setErrMessage(" Username should be between 4 and 16 characters!");
+        if (email.length<4 || email.length>40) {
+            return setErrMessage(" Email should be between 6 and 40 characters!");
         }
         if (password.length<6 || password.length>12) {
-            return setErrMessage(" Password should be between 6 and 12 characters!");
+            return setErrMessage(" Password should be between 8 and 20 characters!");
         }
 
-        authService.login(username, password)
+        authService.login(email, password)
             .then(authData => {
                 userLogin(authData);
                 navigate('/');
@@ -62,7 +62,7 @@ export function Login(){
                                     <form onSubmit={onSubmit}>
                                         <div className="row center">
                                             <div className="col-lg-8 text-center">
-                                                <input type="text" name='username' placeholder="Username" />
+                                                <input type="text" name='email' placeholder="Email" />
                                             </div>
                                             <div className="col-lg-8">
                                                 <input type="password" name='password' placeholder="Password" />

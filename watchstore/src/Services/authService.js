@@ -4,15 +4,14 @@ const baseUrl = 'http://localhost:3001';
 
 const appCredetentials = 'Basic a2lkX3IxRGRMTmRHaDpmOTE0ZGU0MWZjMWU0YWFiOGZjNzljMzM0MmU4NWUwZg==';
 
-export const login = async (username, password) => {
+export const login = async (email, password) => {
     try {     
-        const data = {username, password};
+        const data = {email, password};
 
         const response = fetch(`${baseUrl}/login`, {
             method: 'POST',
             headers:{
                 'content-type': 'application/json',
-                'Authorization': appCredetentials
             },
             body: JSON.stringify(data)
         
