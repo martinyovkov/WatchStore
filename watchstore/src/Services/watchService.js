@@ -7,9 +7,9 @@ export const getAll = async () => {
    const response = fetch(baseUrl, {
         headers:{
              'content-type': 'application/json',
-        }
-       
+        } 
     }).then(result => result.json())
+    console.log( await   response);
 
     return await response;
 

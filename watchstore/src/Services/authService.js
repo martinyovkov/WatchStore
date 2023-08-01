@@ -2,8 +2,6 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3001';
 
-const appCredetentials = 'Basic a2lkX3IxRGRMTmRHaDpmOTE0ZGU0MWZjMWU0YWFiOGZjNzljMzM0MmU4NWUwZg==';
-
 export const login = async (email, password) => {
     try {     
         const data = {email, password};
@@ -21,7 +19,7 @@ export const login = async (email, password) => {
 
         if (result.error) {
             console.log('Yes');
-            throw new Error('The username or password is not valid!');
+            throw new Error('The email or password is not valid!');
         }
 
         return  result;
