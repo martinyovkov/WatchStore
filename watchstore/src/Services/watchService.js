@@ -4,12 +4,9 @@ const baseUrl = 'http://localhost:3001/watches';
 
 
 export const getAll = async () => {
-   const response = fetch(baseUrl, {
-        headers:{
-             'content-type': 'application/json',
-        } 
-    }).then(result => result.json())
-    console.log( await   response);
+    const response = fetch(baseUrl).then(result => result.json());
+
+    console.log(await response);
 
     return await response;
 

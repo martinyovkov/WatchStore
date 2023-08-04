@@ -18,7 +18,6 @@ export const login = async (email, password) => {
         const result = await response;
 
         if (result.error) {
-            console.log('Yes');
             throw new Error('The email or password is not valid!');
         }
 
@@ -45,15 +44,14 @@ export const logout = async (accessToken) => {
     }
 };
 
-export const register = (username, password) =>{
+export const register = (email, username, password) =>{
 
-    const data = {username, password, 'likedWacthes': []}
+    const data = {email, username, password, }
     try {
          const response = fetch(baseUrl, {
             method: 'POST',
             headers:{
-                'content-type': 'application/json',
-                'Authorization': appCredetentials
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         

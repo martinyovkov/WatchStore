@@ -15,11 +15,14 @@ export function Register(){
 
         const formData = new FormData(e.target);
 
+        const email = formData.get('email');
         const username = formData.get('username');
         const password = formData.get('password');
         const confirmPassword = formData.get('repeatPassword');
 
-
+        if (email.length<6 || email.length> 25) {
+            return setErrMessage(" Email should be between 6 and 25 characters!");
+        }
         if (username.length<4 || username.length>16) {
             return setErrMessage(" Username should be between 4 and 16 characters!");
         }
@@ -64,6 +67,9 @@ export function Register(){
                                     
                                     <form onSubmit={onSubmit}>
                                         <div className="row center">
+                                        <div className="col-lg-8 text-center">
+                                                <input type="text" name='email' placeholder="Email" />
+                                            </div>
                                             <div className="col-lg-8 text-center">
                                                 <input type="text" name='username' placeholder="Username" />
                                             </div>

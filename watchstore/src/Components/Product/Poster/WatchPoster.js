@@ -11,7 +11,6 @@ export function Poster({watch}){
     const PosterClickHandler = () =>{
         navigate(`/watches/${watch._id}`);
     };
-
     const LikeHandler =  () =>{
         authService.addLikedWatch(user, watch._id);
     }
@@ -22,7 +21,7 @@ export function Poster({watch}){
                             className="product__item__pic set-bg"
                             data-setbg="img/product/product-1.jpg"
                             style ={{
-                                backgroundImage: `url("${watch.ImageUrl}")`
+                                backgroundImage: `url("${watch.imageUrl}")`
                             }}
                             onClick={PosterClickHandler}
                         >
@@ -36,11 +35,11 @@ export function Poster({watch}){
                         </div>
                                         
                     <div className="product__item__text">
-                        <h6>{watch.Name}</h6>
+                        <h6>{watch.name}</h6>
                         <Link to="#" className="add-cart">
                         + Add To Cart
                         </Link>
-                        <h5>${watch.Price}</h5>
+                        <h5>${watch.price}</h5>
                     </div>
                 </div>
            

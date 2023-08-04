@@ -25,7 +25,7 @@ export function TopProducts(){
                     {
                         bestWatches.map(x=> 
                             <div key={x._id} className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">   
-                                <Poster  watch={x} />
+                                <Poster watch={x} />
                             </div>
                         )
                     }

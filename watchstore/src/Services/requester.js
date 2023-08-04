@@ -4,13 +4,7 @@ const request = async (method, url, data) => {
         const auth = JSON.parse(user || '{}');
 
         let headers = {}
-
-        if (auth.username) {
-            headers['Authorization'] = `Kinvey ${auth._kmd.authtoken}`;
-        }else {
-            headers['Authorization'] = 'Basic Y2xpZW50OjEyMzQ1Ng==';
-        }
-
+        
         let buildRequest;
 
         if (method === 'GET') {
