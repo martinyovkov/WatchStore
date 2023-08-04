@@ -44,11 +44,12 @@ export const logout = async (accessToken) => {
     }
 };
 
-export const register = (email, username, password) =>{
+export const register = (email, username, password, rePassword) =>{
 
-    const data = {email, username, password, }
     try {
-         const response = fetch(baseUrl, {
+        const data = {email, username, password, rePassword }
+    
+        const response = fetch(`${baseUrl}/register`, {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -56,11 +57,14 @@ export const register = (email, username, password) =>{
             body: JSON.stringify(data)
         
         }).then(result => result.json())
+        
 
         return  response;
     } catch (error) {
         console.log(error);
     }
+    
+   
    
 }
 

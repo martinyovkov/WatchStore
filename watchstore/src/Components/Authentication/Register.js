@@ -18,7 +18,7 @@ export function Register(){
         const email = formData.get('email');
         const username = formData.get('username');
         const password = formData.get('password');
-        const confirmPassword = formData.get('repeatPassword');
+        const confirmPassword = formData.get('rePassword');
 
         if (email.length<6 || email.length> 25) {
             return setErrMessage(" Email should be between 6 and 25 characters!");
@@ -27,19 +27,32 @@ export function Register(){
             return setErrMessage(" Username should be between 4 and 16 characters!");
         }
         if (password.length<6 || password.length>12) {
-            return setErrMessage(" Password should be between 6 and 12 characters!");
+            return setErrMessage(" Password should be between 8 and 12 characters!");
         }
         if (password !== confirmPassword) {
             //Should return message
             return setErrMessage("Passwords mismatch!");
         }
 
-        authService.register(username, password)
+        try {
+             authService.register(email, username, password, confirmPassword)
             .then(authData => {
-                userLogin(authData);
-                console.log(authData);
-                navigate('/user');
-            });
+                if (authData.message) {
+                    console.log(authData);
+                    if (authData.message === 'User Validation Error') {
+                        return setErrMessage('Invalid email!')
+                    }
+                    return setErrMessage(authData.message);
+                }else{
+                    userLogin(authData);
+                    navigate('/user');
+                }
+                
+            })
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
     return(
         <> 
@@ -77,7 +90,7 @@ export function Register(){
                                                 <input type="password" name='password' placeholder="Password" />
                                             </div>
                                             <div className="col-lg-8">
-                                                <input type="password" name='repeatPassword' placeholder="Repeat Password" />
+                                                <input type="password" name='rePassword' placeholder="Repeat Password" />
                                             </div>
                                             {errMessage
                                                 ?
