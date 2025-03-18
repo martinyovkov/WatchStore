@@ -41,9 +41,12 @@ export function Header() {
                                     <li>
                                         <NavLink to="/user">Profile</NavLink>
                                     </li>
+                                     {user.email === 'admin@watchstore.com' &&
                                         <li>
-                                            <NavLink to="/watches/create">Sell Watch</NavLink>
+                                            <NavLink to="/watches/create">Add listing</NavLink>
                                         </li>
+                                     }
+                                        
                                         <li>
                                             <NavLink to="/logout">Logout</NavLink>
                                         </li> 

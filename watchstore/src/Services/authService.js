@@ -16,8 +16,8 @@ export const login = async (email, password) => {
         }).then(result => result.json())
 
         const result = await response;
-
-        if (result.error) {
+        console.log(result.status);
+        if (result.status === 400) {
             throw new Error('The email or password is not valid!');
         }
 
